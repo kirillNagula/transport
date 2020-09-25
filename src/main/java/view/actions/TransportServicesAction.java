@@ -1,15 +1,27 @@
 package view.actions;
 
+import controller.CountryController;
 import controller.SaveDistanceInfoController;
+import controller.SelectTransportController;
+import controller.TransportController;
 import exception.ExitException;
 import exception.NoCityException;
 import model.DistanceInfo;
 import model.TransportInfo;
+import org.springframework.stereotype.Component;
 import view.Input;
 
-
+@Component("transportService")
 public class TransportServicesAction extends BaseAction implements Action {
-    private SaveDistanceInfoController saveDistanceInfoController = new SaveDistanceInfoController();
+    private SaveDistanceInfoController saveDistanceInfoController;
+
+    public TransportServicesAction(CountryController countryController,
+                                   SelectTransportController selectTransportController,
+                                   TransportController transportController,
+                                   SaveDistanceInfoController saveDistanceInfoController) {
+        super(countryController, selectTransportController, transportController);
+        this.saveDistanceInfoController = saveDistanceInfoController;
+    }
 
     @Override
     public void action() throws ExitException {

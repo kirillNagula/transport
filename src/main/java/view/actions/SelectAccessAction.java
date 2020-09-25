@@ -4,14 +4,18 @@ import controller.UserController;
 import exception.ExitException;
 import exception.NoUserException;
 import model.User;
+import org.springframework.stereotype.Component;
 import view.Input;
-import view.menu.AdminMenu;
 import view.menu.Menu;
-import view.menu.UserMenu;
 
+@Component("select")
 public class SelectAccessAction implements Action {
-    private UserController controller = new UserController();
+    private UserController controller;
     private Menu menu;
+
+    public SelectAccessAction(UserController controller) {
+        this.controller = controller;
+    }
 
     public void action() throws ExitException {
         User user = new User();
@@ -22,10 +26,10 @@ public class SelectAccessAction implements Action {
         try {
             String access = controller.getAccess(user);
             if (access.equals("Administrator")){//админ меню
-                new AdminMenu();
+                menu.getActions();
             }
             if (access.equals("USER")){//юзер меню
-                new UserMenu();
+                menu.getActions();
             }
         } catch (NoUserException e) {
             System.out.println(e.getMessage());

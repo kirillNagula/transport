@@ -1,11 +1,19 @@
 package controller;
 
 
+import dao.DbCountryDao;
+import dao.DbTransportDao;
 import model.Transport;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class TransportController extends BaseController {
+
+    public TransportController(DbCountryDao dbCountryDao, DbTransportDao dbTransportDao) {
+        super(dbCountryDao, dbTransportDao);
+    }
 
     public List<Transport> get(){
         return dbTransportDao.get();

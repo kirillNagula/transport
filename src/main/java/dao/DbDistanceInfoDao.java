@@ -4,13 +4,14 @@ import connections.MySqlConnections;
 import model.DistanceInfo;
 import model.Transport;
 import model.TransportType;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DbDistanceInfoDao {
-
 
     public void addDistanceInfo(DistanceInfo distanceInfo){
         try(Connection connection = MySqlConnections.getConnection()) {

@@ -2,11 +2,13 @@ package dao;
 
 import connections.MySqlConnections;
 import model.User;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DbUserDao {
 
     public String getAccess(User user){

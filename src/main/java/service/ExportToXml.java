@@ -18,8 +18,6 @@ public class ExportToXml implements Runnable {
         this.distanceInfo = distanceInfo;
     }
 
-    public ExportToXml() {
-    }
 
     public void exportService(List<DistanceInfo> distanceInfo) {
         DistanceInfoWrapper distanceInfoWrapper = new DistanceInfoWrapper(distanceInfo);

@@ -2,11 +2,13 @@ package dao;
 
 import connections.MySqlConnections;
 import model.Country;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DbCountryDao {
 
     public List<Country> get() {

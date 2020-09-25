@@ -9,9 +9,15 @@ import model.TransportType;
 import view.Input;
 
 public abstract class BaseAction {
-    public CountryController countryController = new CountryController();
-    public SelectTransportController selectTransportController = new SelectTransportController();
-    public TransportController transportController = new TransportController();
+    public CountryController countryController;
+    public SelectTransportController selectTransportController;
+    public TransportController transportController;
+
+    public BaseAction(CountryController countryController, SelectTransportController selectTransportController, TransportController transportController) {
+        this.countryController = countryController;
+        this.selectTransportController = selectTransportController;
+        this.transportController = transportController;
+    }
 
     public Country writeInCountry(){
         int id = Input.getInt("Введите id");

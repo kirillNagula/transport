@@ -1,6 +1,9 @@
 package controller;
 
+import dao.DbCountryDao;
+import dao.DbTransportDao;
 import model.*;
+import org.springframework.stereotype.Component;
 import service.CalcOperationService;
 import service.PriceComparator;
 import service.TimeComparator;
@@ -8,11 +11,15 @@ import service.TimeComparator;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class SelectTransportController extends BaseController {
     private CalcOperationService calcOperationService;
 
-    public SelectTransportController() {
+    public SelectTransportController(DbCountryDao dbCountryDao, DbTransportDao dbTransportDao, CalcOperationService calcOperationService) {
+        super(dbCountryDao, dbTransportDao);
+        this.calcOperationService = calcOperationService;
     }
+
 
     public List<Transport> transportOptions(){
         return null;

@@ -1,13 +1,13 @@
 package view.menu;
 
-import view.actions.*;
+import view.actions.Action;
 
 import java.util.Map;
 
-public class UserMenu implements Menu  {
+public class StartMenu implements Menu {
     private Map<Integer, Action> actions;
 
-    public UserMenu(Map<Integer, Action> actions) {
+    public StartMenu(Map<Integer, Action> actions) {
         this.actions = actions;
     }
 

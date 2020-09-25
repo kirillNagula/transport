@@ -1,22 +1,27 @@
 package controller;
 
+import dao.DbCountryDao;
+import dao.DbTransportDao;
 import exception.NoCityException;
 import model.Country;
 import model.TransportInfo;
+import org.springframework.stereotype.Component;
 import service.CalcDistanceService;
 
 import java.util.List;
 
+@Component
 public class CountryController extends BaseController {
 
-    public CountryController() {
+    public CountryController(DbCountryDao dbCountryDao, DbTransportDao dbTransportDao) {
+        super(dbCountryDao, dbTransportDao);
     }
 
     public List<Country> get(){
         return dbCountryDao.get();
     }
 
-    public CalcDistanceService getCoardinat(TransportInfo transportInfo) {
+    public CalcDistanceService getCoordinate(TransportInfo transportInfo) {
         Country countryFrom = dbCountryDao.getCityParameters(transportInfo.getCityFrom());
         Country countryTo = dbCountryDao.getCityParameters(transportInfo.getCityTo());
         return new CalcDistanceService(countryFrom.getLatitude(),countryFrom.getLongitude(),countryTo.getLatitude(),countryTo.getLongitude());

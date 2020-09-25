@@ -2,13 +2,18 @@ package controller;
 
 import dao.DbDistanceInfoDao;
 import model.DistanceInfo;
+import org.springframework.stereotype.Component;
 import service.ExportToXml;
 
 import java.util.List;
 
+@Component
 public class SaveDistanceInfoController {
-    private DbDistanceInfoDao distanceInfoDao = new DbDistanceInfoDao();
+    private DbDistanceInfoDao distanceInfoDao;
 
+    public SaveDistanceInfoController(DbDistanceInfoDao distanceInfoDao) {
+        this.distanceInfoDao = distanceInfoDao;
+    }
 
     public void addInfoToSql(DistanceInfo distanceInfo){
         distanceInfoDao.addDistanceInfo(distanceInfo);

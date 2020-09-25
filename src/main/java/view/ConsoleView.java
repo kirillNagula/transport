@@ -1,13 +1,20 @@
 package view;
 
 import exception.ExitException;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import view.actions.Action;
 import view.menu.Menu;
 
 import java.util.Map;
 
+@Component
 public class ConsoleView {
     private Menu menu;
+
+    public ConsoleView(@Qualifier("startMenu") Menu menu) {
+        this.menu = menu;
+    }
 
     public void start(){
         System.out.println("Начало");
@@ -31,7 +38,7 @@ public class ConsoleView {
     private Action getAction(Menu menu) {
         showMenu(menu);
         int num = Input.getInt("Выберите действие");
-        Action action = menu.map.get(num);
+        Action action = menu.getActions().get(num);
         if (action != null){
             return action;
         }
@@ -40,7 +47,7 @@ public class ConsoleView {
     }
 
     private void showMenu(Menu menu){
-        for (Map.Entry<Integer, Action> actionEntry : menu.map.entrySet())
+        for (Map.Entry<Integer, Action> actionEntry : menu.getActions().entrySet())
             System.out.println(actionEntry.getKey() + " - " + actionEntry.getValue().getName());
     }
 }

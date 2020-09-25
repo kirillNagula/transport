@@ -1,7 +1,9 @@
 package view.actions;
 
 import exception.ExitException;
+import org.springframework.stereotype.Component;
 
+@Component("exit")
 public class ExitAction  implements Action {
 
     @Override
